@@ -1,0 +1,53 @@
+---
+import ThemeIcon from "../assets/themeIcon.svg";
+import BellIcon from "../assets/bellIcon.svg";
+import UserIcon from "../assets/userIcon.svg";
+---
+
+<header class="h-16 bg-white flex items-center px-6 shadow-md">
+  <!-- Left: Logo -->
+  <div class="text-xl font-semibold">LOGO</div>
+
+  <!-- Center: Search Bar -->
+  <div class="flex-1 flex justify-center">
+    <div class="relative w-80">
+      <input
+        type="text"
+        class="w-full pl-10 pr-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Search..."
+      />
+      <svg
+        class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+        width="20"
+        height="20"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M10 2a8 8 0 1 1-4.9 14.32l-3.4 3.39a1 1 0 0 1-1.42-1.42l3.39-3.4A8 8 0 0 1 10 2zm0 2a6 6 0 1 0 3.53 10.94l.29.29-3.4 3.4a6 6 0 1 0-.42-.42l3.4-3.4-.29-.29A6 6 0 0 0 10 4z"
+        />
+      </svg>
+    </div>
+  </div>
+
+  <!-- Right: Icons & Profile -->
+  <div class="flex items-center gap-4">
+	<img
+      src={ThemeIcon.src}
+      alt="Theme"
+      class=" cursor-pointer hover:opacity-80"
+    />
+    <img
+      src={BellIcon.src}
+      alt="Notifications"
+      class=" cursor-pointer hover:opacity-80"
+    />
+    <!-- User Profile -->
+    <img
+      src={UserIcon.src}
+      alt="User"
+      class="w-10 h-10 rounded-full border border-gray-300"
+    />
+  </div>
+</header>

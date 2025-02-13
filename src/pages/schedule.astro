@@ -1,0 +1,9 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Calendar from "../components/Calendar/Calendar.jsx";
+import { events } from "../utils";
+---
+
+<Layout>
+	<Calendar events={events} client:load />
+</Layout>

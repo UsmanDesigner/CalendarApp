@@ -1,0 +1,33 @@
+---
+import Sidebar from "../components/Sidebar.astro";
+import Header from "../components/Header.astro";
+import "../../global.css";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar App</title>
+  </head>
+  <body class="h-screen flex flex-col">
+    <!-- Header (Full Width at the Top) -->
+    <header class="bg-white shadow-md p-4 w-full">
+      <Header />
+    </header>
+
+    <!-- Below Header: Sidebar + Main Content -->
+    <div class="flex flex-1">
+      <!-- Sidebar (Fixed Width, Full Height) -->
+      <aside class="w-64 bg-white/20 backdrop-blur-lg shadow-md">
+        <Sidebar />
+      </aside>
+
+      <!-- Main Content (Fills Remaining Space) -->
+      <main class="flex-1 overflow-auto p-6 bg-gray-100">
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>
