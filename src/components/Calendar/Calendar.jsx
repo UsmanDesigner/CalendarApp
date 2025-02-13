@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import weekday from "dayjs/plugin/weekday";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import "tailwindcss/tailwind.css";
+import Modal from "../ReusableComponents/Modal";
 
 dayjs.extend(weekday);
 dayjs.extend(localizedFormat);
@@ -10,6 +11,7 @@ dayjs.extend(localizedFormat);
 const Calendar = ({ events }) => {
   const [view, setView] = useState("week");
   const [currentDate, setCurrentDate] = useState(dayjs());
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   const handleNext = () => {
     setCurrentDate((prev) =>
@@ -40,7 +42,15 @@ const Calendar = ({ events }) => {
   );
 
   const hours = Array.from({ length: 12 }, (_, i) => i + 6); // 6 AM to 5 PM
+  // Open Modal with Selected Event
+  const handleEventClick = (event) => {
+    setSelectedEvent(event);
+  };
 
+  // Close Modal
+  const handleCloseModal = () => {
+    setSelectedEvent(null);
+  };
   return (
     <div className="p-6 w-full bg-white shadow-md rounded-lg overflow-auto">
       {/* Today Display */}
@@ -166,7 +176,8 @@ const Calendar = ({ events }) => {
               return (
                 <div
                   key={index}
-                  className="absolute flex flex-col items-left justify-center p-2 text-sm rounded-md m-2"
+                  className="absolute flex flex-col items-left justify-center p-2 text-sm rounded-md m-2 cursor-pointer"
+                  onClick={() => handleEventClick(event)}
                   style={{
                     top: `${topOffset}px`,
                     left: `${leftOffset}%`,
@@ -215,6 +226,8 @@ const Calendar = ({ events }) => {
           </div>
         </>
       )}
+    <Modal isOpen={!!selectedEvent} onClose={handleCloseModal} event={selectedEvent} />
+
     </div>
   );
 };
